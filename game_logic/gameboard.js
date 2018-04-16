@@ -1,9 +1,11 @@
-// const gameBoard = (() => {
-//   const contents = [];
-//   const render = () => {};
-//   return { render };
-// })();
+const gameBoard = (() => {
+  const contents = ["x", "x", "x", "x", "x", "x", "x", "x", "x"];
 
-const gameBoard = () => console.log("this is the gameBoard");
+  const render = () => {
+    return contents;
+  };
 
-module.exports.gameBoard = gameBoard;
+  return { render };
+})();
+
+// module.exports.gameBoard = gameBoard;
