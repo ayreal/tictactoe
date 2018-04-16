@@ -6,6 +6,10 @@ table {
   margin: 5% auto;
 }
 
+.main {
+  text-align: center;
+}
+
 .gameSquare {
   height: 6em;
   width: 5em;
