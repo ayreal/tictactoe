@@ -1,17 +1,34 @@
-// use an IFFE pattern here to keep contents out of the global scope
+// use an IFFE pattern here to keep values out of the global scope
 // this is the "module pattern" (don't confuse with the "module export pattern")
 // I used this instead of ES6 classes because there is only one gameBoard
 const gameboard = (() => {
-  const contents = [];
+  const values = ["x", "o", "x", null, null, null, "x", "o", null];
 
-  const render = () => {
-    return contents;
+  // check if space is already occupied
+
+  // place given player's marker in array at given place
+  const placeMarker = (player, spaceId) => {
+    const marker = player.marker;
+    return (values[spaceId] = marker);
   };
 
-  return { render };
+  // render gameboard values to the DOM
+  const render = () => {
+    return document.querySelectorAll(".gameSquare").forEach((square, index) => {
+      if (values[index]) {
+        return (square.innerText = `${values[index]}`);
+      } else {
+        return null;
+      }
+    });
+  };
+
+  return { render, placeMarker };
 })();
 
 // module export pattern assures I can access this code in my test files
 module.exports = {
-  render: gameboard.render
+  render: gameboard.render,
+  placeMarker: gameboard.placeMarker,
+  values: gameboard.values
 };
