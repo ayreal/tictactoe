@@ -11,6 +11,9 @@ table {
 }
 
 .gameSquare {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
   height: 6em;
   width: 5em;
   line-height: 0;
