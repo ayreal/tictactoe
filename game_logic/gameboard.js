@@ -5,14 +5,17 @@ const gameboard = (() => {
   const values = [];
 
   // check if space is already occupied
-  const isOccupied = spaceId => {
-    return true;
-  };
+  // I think I have to pass values in as a parameter to get tests to work?
+  const isOccupied = (values, spaceId) => !!values[spaceId];
 
   // place given player's marker in array at given place
-  const placeMarker = (player, spaceId) => {
-    // const marker = player.marker;
-    // return (values[spaceId] = marker);
+  const placeMarker = (values, player, spaceId) => {
+    if (isOccupied(values, spaceId)) {
+      throw Error("This space is already taken");
+    } else {
+      values[spaceId] = player.marker;
+      return true;
+    }
   };
 
   // render gameboard values to the DOM
