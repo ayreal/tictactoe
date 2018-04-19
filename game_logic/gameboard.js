@@ -2,14 +2,17 @@
 // this is the "module pattern" (don't confuse with the "module export pattern")
 // I used this instead of ES6 classes because there is only one gameBoard
 const gameboard = (() => {
-  const values = ["x", "o", "x", null, null, null, "x", "o", null];
+  const values = [];
 
   // check if space is already occupied
+  const isOccupied = spaceId => {
+    return true;
+  };
 
   // place given player's marker in array at given place
   const placeMarker = (player, spaceId) => {
-    const marker = player.marker;
-    return (values[spaceId] = marker);
+    // const marker = player.marker;
+    // return (values[spaceId] = marker);
   };
 
   // render gameboard values to the DOM
@@ -23,11 +26,12 @@ const gameboard = (() => {
     });
   };
 
-  return { render, placeMarker };
+  return { render, placeMarker, isOccupied };
 })();
 
 // module export pattern assures I can access this code in my test files
 module.exports = {
+  isOccupied: gameboard.isOccupied,
   render: gameboard.render,
   placeMarker: gameboard.placeMarker,
   values: gameboard.values
